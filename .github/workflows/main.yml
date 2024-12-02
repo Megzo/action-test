@@ -52,11 +52,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest .
-
+          docker build -t ghcr.io/${{ github.repository_owner | toLower }}/${{ github.repository | toLower }}:latest .
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
+          docker push ghcr.io/${{ github.repository_owner | toLower }}/${{ github.repository | toLower }}:latest
 
   deploy:
     runs-on: ubuntu-latest
